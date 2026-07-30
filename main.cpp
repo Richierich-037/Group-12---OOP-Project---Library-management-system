@@ -154,4 +154,33 @@ public:
         }
        return lateDays * finePerDay;
     }
+int main() {
+    Librarian librarian(1, "Ama");
+    User user(100, "Sark");
+
+    librarian.addBook(Book(1, "Chinua Achebe", "Things Fall Apart"));
+    librarian.addBook(Book(2, "Ayi Kwei Armah", "The Beautyful Ones Are Not Yet Born"));
+    librarian.addBook(Book(3, "Ama Ata Aidoo", "Changes: A Love Story"));
+    librarian.addBook(Book(4, "Chimamanda Ngozi Adichie", "Half of a Yellow Sun"));
+    librarian.addBook(Book(5, "Ngugi wa Thiong'o", "The River Between"));
+    librarian.addBook(Book(6, "Wole Soyinka", "Ake: The Years of Childhood"));
+    librarian.addBook(Book(7, "Yaa Gyasi", "Homegoing"));
+    librarian.addBook(Book(8, "Buchi Emecheta", "The Joys of Motherhood"));
+    librarian.addBook(Book(9, "Kofi Awoonor", "This Earth, My Brother"));
+    librarian.addBook(Book(10, "Ben Okri", "The Famished Road"));
+
+    librarian.displayInventory();
+
+    librarian.issueBook(user, 1);       // issue book 1
+    librarian.issueBook(user, 1);       // now unavailable
+    librarian.returnBook(user, 2);      // user never borrowed book 2
+    librarian.returnBook(user, 1);      // valid return
+
+    librarian.displayInventory();
+    user.displayUser();
+
+    cout << "\nFine for 3 late days: GHS "
+         << librarian.calculateFine(3) << endl;
+
+    return 0;
 };
