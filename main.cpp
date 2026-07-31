@@ -163,13 +163,13 @@ public:
 };
 
 int main() {
-    cout << "  WELCOME TO THE LIBRARY MANAGEMENT SYSTEM";
 
+    cout << "  WELCOME TO THE LIBRARY MANAGEMENT SYSTEM";
+    
     // 1. Create a Librarian
     Librarian librarian(1, "Mr. William Smith");
-    cout << "\nLibrarian: " << librarian.getName()
-         << " (ID: " << librarian.getLibrarianID() << ")\n";
-
+    cout << "\nLibrarian: " << librarian.getName() << " (ID: " << librarian.getLibrarianID() << ")\n";
+    
     // 2. Add Books to the Library
     cout << "\n--- ADDING BOOKS TO LIBRARY ---\n";
     Book book1(101, "George Orwell", "1984");
