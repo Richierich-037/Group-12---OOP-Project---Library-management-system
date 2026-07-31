@@ -101,6 +101,16 @@ private:
     vector<Book> inventory;
 
 public:
+
+     //getters
+    string getName() {
+     return name;
+     }
+
+    int getLibrarianID() {
+    return librarianID;
+    }
+
     // Constructor
     Librarian(int id, string librarianName) {
         librarianID = id;
@@ -155,97 +165,232 @@ public:
        return lateDays * finePerDay;
     }
 };
-
 int main() {
 
-    cout << "  WELCOME TO THE LIBRARY MANAGEMENT SYSTEM";
-    
-    // 1. Create a Librarian
-    Librarian librarian(1, "Mr. William Smith");
-    cout << "\nLibrarian: " << librarian.getName() << " (ID: " << librarian.getLibrarianID() << ")\n";
-    
-    // 2. Add Books to the Library
-    cout << "\n--- ADDING BOOKS TO LIBRARY ---\n";
+    cout << "=====================================\n";
+    cout << "   WELCOME TO THE LIBRARY SYSTEM\n";
+    cout << "=====================================\n";
+
+
+    // Create Librarian using user input
+
+    int librarianID;
+    string librarianName;
+
+
+    cout << "\nEnter Librarian ID: ";
+    cin >> librarianID;
+
+    cin.ignore();
+
+    cout << "Enter Librarian Name: ";
+    getline(cin, librarianName);
+
+
+    Librarian librarian(librarianID, librarianName);
+
+
+
+    cout << "\nLibrarian Created Successfully\n";
+    cout << "Name: " << librarian.getName();
+    cout << "\nID: " << librarian.getLibrarianID() << endl;
+
+
+
+    // Add Books
+
     Book book1(101, "George Orwell", "1984");
     Book book2(102, "Harper Lee", "To Kill a Mockingbird");
     Book book3(103, "J.R.R. Tolkien", "The Hobbit");
     Book book4(104, "F. Scott Fitzgerald", "The Great Gatsby");
     Book book5(105, "J.K. Rowling", "Harry Potter and the Philosopher's Stone");
-    
-    librarian.addBook(book1);  
-    librarian.addBook(book2);  
-    librarian.addBook(book3);  
-    librarian.addBook(book4);  
-    librarian.addBook(book5);  
-    
-    // 3. Display All Books in Inventory
-    librarian.displayInventory();  
-    // 4. Create Users
-    cout << "\n--- CREATING USERS ---\n";
+
+
+    librarian.addBook(book1);
+    librarian.addBook(book2);
+    librarian.addBook(book3);
+    librarian.addBook(book4);
+    librarian.addBook(book5);
+
+
+
+    // Create Users
+
     User user1(201, "Alice Johnson");
     User user2(202, "Bob Williams");
     User user3(203, "Charlie Brown");
-    
-    cout << "User 1: " << user1.getName() << " (ID: " << user1.getUserID() << ")\n";
-    cout << "User 2: " << user2.getName() << " (ID: " << user2.getUserID() << ")\n";
-    cout << "User 3: " << user3.getName() << " (ID: " << user3.getUserID() << ")\n";
-    
-    // 5. Issue Books to Users
-    cout << "\n--- ISSUING BOOKS ---\n";
-    
-    cout << "Issuing '1984' (ID: 101) to Alice:\n";
-    librarian.issueBook(user1, 101);
-    
-    cout << "\nIssuing 'The Hobbit' (ID: 103) to Bob:\n";
-    librarian.issueBook(user2, 103);
-    
-    cout << "\nIssuing 'The Great Gatsby' (ID: 104) to Charlie:\n";
-    librarian.issueBook(user3, 104);
-    
-    cout << "\nTrying to issue '1984' (ID: 101) again to Bob (should fail):\n";
-    librarian.issueBook(user2, 101);
-    
-    // 6. Display Users' Borrowed Books
-    cout << "\n--- USER BORROWING INFORMATION ---\n";
-    user1.displayUser();
-    user2.displayUser();
-    user3.displayUser();
-    
-    // 7. Display Updated Inventory
-    cout << "\n--- UPDATED INVENTORY ---\n";
-    librarian.displayInventory();
-    
-    // 8. Return a Book
-    cout << "\n--- RETURNING BOOKS ---\n";
-    
-    cout << "Alice returning '1984' (ID: 101):\n";
-    librarian.returnBook(user1, 101);
-    
-    cout << "\nBob returning 'The Hobbit' (ID: 103):\n";
-    librarian.returnBook(user2, 103);
-    
-    // 9. Display Final Inventory and User Info
-    cout << "\n--- FINAL INVENTORY ---\n";
-    librarian.displayInventory();
-    
-    cout << "\n--- FINAL USER INFORMATION ---\n";
-    user1.displayUser();
-    user2.displayUser();
-    user3.displayUser();
-    
-    // 10. Calculate Late Fees
-    cout << "\n--- LATE FEE CALCULATION ---\n";
-    
-    int lateDays = 5;
-    double fine = librarian.calculateFine(lateDays);
-    cout << "Fine for " << lateDays << " late days: $" << fine << endl;
-    
-    lateDays = 0;
-    fine = librarian.calculateFine(lateDays);
-    cout << "Fine for " << lateDays << " late days: $" << fine << " (No fine for on-time return)\n";
-    
-    cout << "  THANK YOU FOR USING THE LIBRARY SYSTEM";
-   
-    
+
+
+
+    int choice;
+
+
+    do {
+
+        cout << "\n=====================================\n";
+        cout << "          LIBRARY MENU\n";
+        cout << "=====================================\n";
+
+        cout << "1. Display all books\n";
+        cout << "2. Issue a book\n";
+        cout << "3. Return a book\n";
+        cout << "4. Display users\n";
+        cout << "5. Calculate fine\n";
+        cout << "6. Exit\n";
+
+
+        cout << "Enter choice: ";
+        cin >> choice;
+
+
+
+        switch(choice) {
+
+
+        case 1:
+
+            librarian.displayInventory();
+
+            break;
+
+
+
+        case 2:
+        {
+            int userChoice;
+            int bookID;
+
+
+            cout << "\nSelect User\n";
+            cout << "1. " << user1.getName() << endl;
+            cout << "2. " << user2.getName() << endl;
+            cout << "3. " << user3.getName() << endl;
+
+            cout << "Choice: ";
+            cin >> userChoice;
+
+
+            cout << "Enter Book ID: ";
+            cin >> bookID;
+
+
+
+            if(userChoice == 1)
+                librarian.issueBook(user1, bookID);
+
+            else if(userChoice == 2)
+                librarian.issueBook(user2, bookID);
+
+            else if(userChoice == 3)
+                librarian.issueBook(user3, bookID);
+
+            else
+                cout << "Invalid user.\n";
+
+
+            break;
+        }
+
+
+
+        case 3:
+        {
+            int userChoice;
+            int bookID;
+
+
+            cout << "\nSelect User\n";
+            cout << "1. " << user1.getName() << endl;
+            cout << "2. " << user2.getName() << endl;
+            cout << "3. " << user3.getName() << endl;
+
+
+            cout << "Choice: ";
+            cin >> userChoice;
+
+
+            cout << "Enter Book ID: ";
+            cin >> bookID;
+
+
+
+            if(userChoice == 1)
+                librarian.returnBook(user1, bookID);
+
+            else if(userChoice == 2)
+                librarian.returnBook(user2, bookID);
+
+            else if(userChoice == 3)
+                librarian.returnBook(user3, bookID);
+
+            else
+                cout << "Invalid user.\n";
+
+
+            break;
+        }
+
+
+
+
+        case 4:
+
+            cout << "\n--- USER INFORMATION ---\n";
+
+
+            cout << "\nUser 1";
+            user1.displayUser();
+
+
+            cout << "\nUser 2";
+            user2.displayUser();
+
+
+            cout << "\nUser 3";
+            user3.displayUser();
+
+
+            break;
+
+
+
+        case 5:
+        {
+            int lateDays;
+
+
+            cout << "Enter number of late days: ";
+            cin >> lateDays;
+
+
+            cout << "Fine: $"
+                 << librarian.calculateFine(lateDays)
+                 << endl;
+
+
+            break;
+        }
+
+
+
+        case 6:
+
+            cout << "\nThank you for using the Library System.\n";
+
+            break;
+
+
+
+        default:
+
+            cout << "Invalid choice.\n";
+
+        }
+
+
+    } while(choice != 6);
+
+
+
     return 0;
 }
