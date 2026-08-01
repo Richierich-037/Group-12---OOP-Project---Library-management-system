@@ -99,7 +99,6 @@ private:
     vector<Book> inventory;
 
 public:
-
      //getters
     string getName() {
      return name;
