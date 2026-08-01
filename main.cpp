@@ -133,6 +133,37 @@ public:
         for (size_t i = 0; i < inventory.size(); i++) {
             inventory[i].displayBook();
         }
+        void displayBook() {
+      cout << "\nTitle: " << title;
+      cout << "\nAuthor: " << author;
+      cout << "\nBook ID: " << bookID;
+    if (isAvailable) {
+     cout << "\nStatus: Available\n";
+      }
+    else {
+     cout << "\nStatus: Unavailable\n";
+        }
+            bool operator==(const Book& other) const {
+        return bookID == other.bookID;
+    }
+
+    // NEW: Overloaded << operator
+    friend ostream& operator<<(ostream& out, const Book& book) {
+        out << "\nTitle: " << book.title;
+        out << "\nAuthor: " << book.author;
+        out << "\nBook ID: " << book.bookID;
+        out << "\nStatus: " << (book.isAvailable ? "Available" : "Unavailable") << "\n";
+        return out;
+    }
+};
+    }
+
+    // NEW: Overloaded == operator
+    bool operator==(const Book& other) const {
+        return bookID == other.bookID;
+    }
+
+}; // <- this closing brace was already there, don't touch it
     }
 
     void issueBook(User& user, int bookID) {
@@ -172,6 +203,7 @@ public:
         return lateDays * finePerDay;
     }
 };
+
 int main() {
 
     cout << "=====================================\n";
