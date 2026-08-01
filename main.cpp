@@ -211,6 +211,7 @@ int main() {
     Book book3(103, "J.R.R. Tolkien", "The Hobbit");
     Book book4(104, "F. Scott Fitzgerald", "The Great Gatsby");
     Book book5(105, "J.K. Rowling", "Harry Potter and the Philosopher's Stone");
+    Book book6(106,"Chinua Achebe", "Things Fall Apart");
 
 
     librarian.addBook(book1);
@@ -218,6 +219,7 @@ int main() {
     librarian.addBook(book3);
     librarian.addBook(book4);
     librarian.addBook(book5);
+    
 
 
 
@@ -237,6 +239,7 @@ int main() {
     User user1(201, "Alice Johnson");
     User user2(202, "Bob Williams");
     User user3(203, "Charlie Brown");
+    User user4(204, " Gideon Osei");
 
 
 
@@ -283,6 +286,7 @@ int main() {
             cout << "1. " << user1.getName() << endl;
             cout << "2. " << user2.getName() << endl;
             cout << "3. " << user3.getName() << endl;
+            cout << "4." << user4.getName() << endl;
 
             cout << "Choice: ";
             cin >> userChoice;
@@ -321,6 +325,7 @@ int main() {
             cout << "1. " << user1.getName() << endl;
             cout << "2. " << user2.getName() << endl;
             cout << "3. " << user3.getName() << endl;
+            cout << "4. " << user4.getName() << endl;
 
 
             cout << "Choice: ";
@@ -412,6 +417,7 @@ int main() {
     cout << "User 1: " << user1.getName() << " (ID: " << user1.getUserID() << ")\n";
     cout << "User 2: " << user2.getName() << " (ID: " << user2.getUserID() << ")\n";
     cout << "User 3: " << user3.getName() << " (ID: " << user3.getUserID() << ")\n";
+    cout << "User 4: " << user4.getName() << " (ID: " << user4.getUserID() << ")\n";
 
     // 5. Issue Books to Users
     cout << "\n--- ISSUING BOOKS ---\n";
@@ -433,6 +439,7 @@ int main() {
     user1.displayUser();
     user2.displayUser();
     user3.displayUser();
+    user4.displayUser();
 
     // 7. Display Updated Inventory
     cout << "\n--- UPDATED INVENTORY ---\n";
@@ -455,6 +462,7 @@ int main() {
     user1.displayUser();
     user2.displayUser();
     user3.displayUser();
+    user4.dispalyUser();
 
     // 10. Calculate Late Fees
     cout << "\n--- LATE FEE CALCULATION ---\n";
